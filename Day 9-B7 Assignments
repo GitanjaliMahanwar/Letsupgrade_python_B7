@@ -1,0 +1,118 @@
+Unit Testing
+
+! pip install pylint
+Requirement already satisfied: pylint in c:\programdata\anaconda3\lib\site-packages (2.5.3)
+Requirement already satisfied: mccabe<0.7,>=0.6 in c:\programdata\anaconda3\lib\site-packages (from pylint) (0.6.1)
+Requirement already satisfied: colorama; sys_platform == "win32" in c:\programdata\anaconda3\lib\site-packages (from pylint) (0.4.3)
+Requirement already satisfied: toml>=0.7.1 in c:\programdata\anaconda3\lib\site-packages (from pylint) (0.10.1)
+Requirement already satisfied: astroid<=2.5,>=2.4.0 in c:\programdata\anaconda3\lib\site-packages (from pylint) (2.4.2)
+Requirement already satisfied: isort<5,>=4.2.5 in c:\programdata\anaconda3\lib\site-packages (from pylint) (4.3.21)
+Requirement already satisfied: six~=1.12 in c:\programdata\anaconda3\lib\site-packages (from astroid<=2.5,>=2.4.0->pylint) (1.15.0)
+Requirement already satisfied: wrapt~=1.11 in c:\programdata\anaconda3\lib\site-packages (from astroid<=2.5,>=2.4.0->pylint) (1.11.2)
+Requirement already satisfied: lazy-object-proxy==1.4.* in c:\programdata\anaconda3\lib\site-packages (from astroid<=2.5,>=2.4.0->pylint) (1.4.3)
+
+! pip install unittest2
+​
+Requirement already satisfied: unittest2 in c:\programdata\anaconda3\lib\site-packages (1.1.0)
+Requirement already satisfied: six>=1.4 in c:\programdata\anaconda3\lib\site-packages (from unittest2) (1.15.0)
+Requirement already satisfied: traceback2 in c:\programdata\anaconda3\lib\site-packages (from unittest2) (1.4.0)
+Requirement already satisfied: argparse in c:\programdata\anaconda3\lib\site-packages (from unittest2) (1.4.0)
+Requirement already satisfied: linecache2 in c:\programdata\anaconda3\lib\site-packages (from traceback2->unittest2) (1.0.0)
+
+! pip install unittest
+ERROR: Could not find a version that satisfies the requirement unittest (from versions: none)
+ERROR: No matching distribution found for unittest
+
+​
+
+#
+#Write a python Function for finding is a given number prime or not and do Unit Testing on it using PyLint and Unittest Library.
+
+# 
+# PyLint
+
+%%writefile check_prime_number.py
+'''
+This is a module to check weather the given number is even or odd.''
+'''
+def prime(num):
+    '''
+    This is the main function which check out the given number is even or odd.
+    '''
+    if num > 1:
+        for i in range(2, num):
+            if (num % i) == 0:
+                break
+            return print("It is a Prime Number")
+    return print("It is not a Prime Number")
+n = int(input("enter the number :"))
+prime(n)
+Writing check_prime_number.py
+
+! pylint "check_prime_number.py"
+
+------------------------------------
+
+Your code has been rated at 10.00/10
+
+
+
+Unittest¶
+
+%%writefile capitalizeText.py
+​
+def capText(string_To_Cap):
+    return string_To_Cap.title()
+Writing capitalizeText.py
+
+%%writefile test.py
+'''
+this is the test file in which we are going to check out the py file with the help of unittest
+'''
+import unittest
+import capitalizeText
+​
+class testPrimeNumber(unittest.TestCase):
+    def testOne(self):
+        result = capitalizeText.capText("anmol noor")
+        self.assertEqual(result,"Anmol Noor") 
+    def testSecond(self):
+        result = capitalizeText.capText("this is a text string to test the unittest on a file")
+        self.assertEqual(result,"This Is A Text String To Test The Unittest On A File")
+        
+if __name__ == "__main__":
+    unittest.main()
+Writing test.py
+
+! python test.py
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK
+
+​
+
+# 
+# Make a small generator program for returning armstrong numbers in between 1-1000 in a generator object.
+
+def armstrong(num):
+    for x in range(1,num):
+        if x>10:
+            order = len(str(x))
+            sum = 0
+​
+            temp = x
+            while temp > 0:
+                digit = temp % 10
+                sum += digit ** order
+                temp //= 10
+​
+            if x == sum:
+                yield print("The First Armstrong Nubmer is : ", x)
+
+lst = list(armstrong(1000))
+The First Armstrong Nubmer is :  153
+The First Armstrong Nubmer is :  370
+The First Armstrong Nubmer is :  371
+The First Armstrong Nubmer is :  407
