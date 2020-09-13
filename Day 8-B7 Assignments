@@ -1,0 +1,53 @@
+Assignment No.1
+decorator
+
+
+arr = []
+
+def getInput(calculate_arg_fun):
+    def wrap_function():
+        print("Hey people enter two numbers =")
+        a = int(input("Enter your upper limit - "))
+        b = int(input("Enter your lower limit - "))
+        for i in range(a,b):
+            calculate_arg_fun(i)   
+    return wrap_function
+
+@getInput
+def prime(num):
+    check = 0
+    for y in range(2,num):
+        if num%y == 0 :
+            check+=1
+    if check==0 and num != 1:
+        arr.append(num)
+
+prime()
+Hey people enter two numbers =
+Enter your upper limit - 1
+Enter your lower limit - 200
+
+print(arr)
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199]
+Assignments No.2
+#Exception Handling
+
+
+%%writefile test.txt
+​
+This is the test file for the exception handling in python for the python course in letsupgrade Batch 7.
+Writing test.txt
+
+f = open("test.txt",'r')
+f.read()
+'\nThis is the test file for the exception handling in python for the python course in letsupgrade Batch 7.\n'
+
+try:
+    f.write("my first file\n")
+except:
+    print("unable to write to file due to the read mode of file")
+finally:
+    f.close()
+unable to write to file due to the read mode of file
+
+​
